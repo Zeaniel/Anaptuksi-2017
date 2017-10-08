@@ -1,8 +1,5 @@
+#include "object_list.h"
 
-#include"object_list.h"
-#include<string>
-#include<cstring>
-using namespace std;
 Curve :: Curve( string coors )//Defining a curve
 	:Next_Curve(NULL),coordinates(coors){}
 

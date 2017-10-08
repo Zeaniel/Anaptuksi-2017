@@ -1,8 +1,5 @@
-#include <iostream>
-#include <string>
-#include "Functions.hpp"
+#include "Functions.h"
 
-using namespace std;
 
 string ReadLine(){
 
@@ -10,13 +7,13 @@ string ReadLine(){
 
 	do {
 
-		getline(cin,line);
-    		a += line + '\n';
+		getline(cin,line);	
+    		a += line + '\n';	//apothikeush string apo ton xrhsth se mia metavlhth
 
   	} while (!line.empty());
 		
-	line.clear();
+	//line.clear();
 
-	return 	a;
+	return 	a;			//epistrofh metavlhths
 
 }

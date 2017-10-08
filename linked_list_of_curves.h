@@ -1,13 +1,18 @@
+#ifndef linked_list_of_curves_H
+#define linked_list_of_curves_H
+
 #include <iostream>
 #include <cstddef>
-#include"object_list.h"
+#include "object_list.h"
+
 using namespace std;
 /* definition of the linked list class */
+
 class Linked_List_C{
-		friend class  Curve           ;//class Curve has access 
+		friend class  Curve;		//class Curve has access 
 	private:
-		Curve 	* 	Head         ;/* pointer of Head node */
-		int 		Size_of_list ;/*size of list  */
+		Curve 	* 	Head;		/* pointer of Head node */
+		int 		Size_of_list;	/*size of list  */
 	public:
 		/* Constructors */
 		Linked_List_C(void);
@@ -32,4 +37,6 @@ class Linked_List_C{
 		//This function tells us if a curve exists
 		bool  Is_in_C( string);
 };
+
+#endif
 
