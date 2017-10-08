@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <string.h>
+#include <stdlib.h>
 #include "Functions.hpp"
 
 using namespace std;
@@ -45,6 +47,8 @@ int main(int argc, const char *argv[]) {
 		cout << "give the path for your output 2 file" << endl;
 		o = ReadLine();
 	}
+
+}
 
 
 
