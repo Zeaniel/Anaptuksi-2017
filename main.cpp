@@ -14,11 +14,13 @@ using namespace std;
 
 
 int main(int argc, const char *argv[]) {
-	int k = 4, L = 5, index;			   		// arxikopoihsh tou K kai tou L
+	int k = 2, L = 3, index;			   		// arxikopoihsh tou K kai tou L
 	string dataset, queries, output;				// strings gia apothikeush paths
 	string str ;							// string gia apothikeush twn suntetagmenwn	
 	string type_of_hash;						// eidos hashtable
 	string type_of_distance;					// eidos apostashs
+
+	int i;
 
 	//FILE *dataset=NULL;
   

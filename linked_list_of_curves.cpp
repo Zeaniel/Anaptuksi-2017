@@ -140,7 +140,6 @@ void Linked_List_C :: Traverse_and_print_C(){
 	}
 
 }
-// --------------------------------------------------//
 
 Curve* Linked_List_C :: Return_a_curve_C( vector<vector <double> > coors){
         Curve* Conductor = Head;					//create a conductor

@@ -17,3 +17,13 @@ string ReadLine(){
 	return 	a;			//epistrofh metavlhths
 
 }
+
+void Concantanate(vector< vector <double>> dest, vector< vector <double>> src){
+
+ 	dest.insert(
+      		dest.end(),
+      		make_move_iterator(src.begin()),
+     		make_move_iterator(src.end())
+    	);
+
+}
