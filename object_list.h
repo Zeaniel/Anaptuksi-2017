@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <cstring>
+#include <vector>
 
 using namespace std;
 
@@ -12,10 +13,11 @@ class Curve {
 	friend class Linked_List_C;		//class Linked_List_C has access here
 	private:
 		Curve* 	        Next_Curve;	//Pointer to the next curve
-		string		coordinates;	//Information of the curve
+		vector< vector <double> > coordinates ;
+		//string		coordinates;	//Information of the curve
 
 	public :
-		Curve( string coordinates );	//constructor with values
+		Curve( vector< vector <double> > );	//constructor with values
 		Curve(void);			//default constructor
 					
 		void Print_Curve();		//function to print the curves

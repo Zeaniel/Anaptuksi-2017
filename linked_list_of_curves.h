@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include <cstddef>
+#include <vector>
 #include "object_list.h"
+
 
 using namespace std;
 /* definition of the linked list class */
@@ -13,10 +15,11 @@ class Linked_List_C{
 	private:
 		Curve 	* 	Head;		/* pointer of Head node */
 		int 		Size_of_list;	/*size of list  */
+		int 		dimensions   ;
 	public:
 		/* Constructors */
 		Linked_List_C(void);
-		Linked_List_C( string);
+		Linked_List_C( int , vector<vector <double> >);
 
     		/* Destructor */
 		~Linked_List_C(void);
@@ -25,17 +28,17 @@ class Linked_List_C{
 		void Traverse_and_print_C();
 
 		/*Add curve to the end of the list*/
-		void Add_curve_on_tail_C( string) ;
+		void Add_curve_on_tail_C( vector<vector <double> >) ;
 		/* This function returns the size of the list  */
 		int size_of_list_C();  
 		//This function deletes  the list
 		void Delete_all_the_curves();
 		//This function deletes a defined curve by user
-		void Delete_a_curve_C( string );
+		void Delete_a_curve_C( vector<vector <double> > );
 		//This function returns a connections searcing it by its elements
-		Curve* Return_a_curve_C( string );
+		Curve* Return_a_curve_C( vector<vector <double> > );
 		//This function tells us if a curve exists
-		bool  Is_in_C( string);
+		bool  Is_in_C( vector<vector <double> >);
 };
 
 #endif

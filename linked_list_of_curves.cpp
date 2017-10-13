@@ -5,7 +5,7 @@
 
 Linked_List_C :: Linked_List_C() : Size_of_list(0){			// Default definition of the list with no elements only the 										// root(head->default)
  
-        Head = new Curve("");
+        Head = new Curve();
         
 	//cout << "I just constructed a list with Head \n";
         //cout << Head->Start << "\n" ;
@@ -13,13 +13,14 @@ Linked_List_C :: Linked_List_C() : Size_of_list(0){			// Default definition of t
 
 // ---------------------------------------------------//
 
-Linked_List_C :: Linked_List_C( string coors) : Size_of_list(1){	//definition of a list with one element(head) 
+Linked_List_C :: Linked_List_C( int dim ,vector< vector <double> > coors)
+        : Size_of_list(1),dimensions(2){				//definition of a list with one element(head) 
 
         /* Create a new node, acting as both the head and tail node */
       
 	Head = new Curve(coors);
         cout << "I just constructed a list of edges with Head \n";
-        cout << Head->coordinates ;
+        //cout << Head->coordinates ;
         cout << endl;
 }
 
@@ -45,8 +46,8 @@ int Linked_List_C  :: size_of_list_C() {
 
 // --------------------------------------------------//
 
-void Linked_List_C ::  Add_curve_on_tail_C( string coors){
-	Curve* new_curve =  new Curve(coors);				//new  curve(class construction)
+void Linked_List_C ::  Add_curve_on_tail_C( vector<vector <double> > New_Curve ){
+	Curve* new_curve =  new Curve(New_Curve);				//new  curve(class construction)
 	Curve* Tail = Head;						//make this connection equal to the head of the list(memory-position)
         while(Tail-> Next_Curve)					//While this new connection points to a an other connection(Not NULL)
 		Tail = Tail->Next_Curve;				//go on the list
@@ -119,8 +120,19 @@ void Linked_List_C :: Traverse_and_print_C(){
 		}
 		else{	
 			//print the curve
-			cout  <<" " ;
-			cout <<"   " << Conductor->coordinates << "->" ;
+			cout  <<"Next curve->\n";
+			//cout <<"   " << Conductor->coordinates << "->" ;
+			for(int  i =0 ; i < Conductor->coordinates.size(); i++){
+                			//cout <<"Next Curve/vector:|";
+				for(int j = 0; j< Conductor->coordinates[i].size(); j++ ){
+                        		cout<< Conductor->coordinates[i][j] ;
+					if(j % 2 == 0 ){cout << ",";}
+					if(j % 2 == 1 ){cout << "";}
+                		}
+                		cout << endl <<"-";
+					 
+        		}
+
 			// The pointer moves along to the next curve 
                 	Conductor = Conductor->Next_Curve;
         	}
@@ -130,14 +142,14 @@ void Linked_List_C :: Traverse_and_print_C(){
 }
 // --------------------------------------------------//
 
-Curve* Linked_List_C :: Return_a_curve_C( string coors){
+Curve* Linked_List_C :: Return_a_curve_C( vector<vector <double> > coors){
         Curve* Conductor = Head;					//create a conductor
               	if (Is_in_C(coors) == 1){				//If requested curve is in the list
 			if(Conductor!=NULL){
                         	while(Conductor!= NULL){		//find the requsted curve an return the memory position
-					if(Conductor->coordinates == coors){
+					//if(Conductor->coordinates == coors){
                         	                return Conductor ;
-                                	}
+                                	//}
 						Conductor = Conductor->Next_Curve;//go on
                         	}
                 	}
@@ -148,15 +160,15 @@ Curve* Linked_List_C :: Return_a_curve_C( string coors){
 }
 // --------------------------------------------------//
 
-bool Linked_List_C :: Is_in_C( string coors ){
+bool Linked_List_C :: Is_in_C( vector<vector <double> > ){
 	Curve* Conductor = Head ;					//create a conductor for our list
 	if(Conductor!= NULL){
 		while (Conductor!=NULL){				//while we wre not at the end of the list
-			if((Conductor->coordinates == coors )){
+			//if((Conductor->coordinates == coors )){
 			  
 				return 1;
 				break;
-			}
+			//}
 			Conductor = Conductor->Next_Curve; 		//go on
 		}
 	}

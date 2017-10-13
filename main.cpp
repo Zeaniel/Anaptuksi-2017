@@ -6,6 +6,7 @@
 #include <cstring>
 #include "Functions.h"
 #include "linked_list_of_curves.h"
+#include "open_file.h"
 
 #define D 25
 
@@ -14,16 +15,40 @@ using namespace std;
 
 int main(int argc, const char *argv[]) {
 	int k = 4, L = 5, index;			   		// arxikopoihsh tou K kai tou L
-	string d, q, o;							// strings gia apothikeush paths
+	string dataset, queries, output;				// strings gia apothikeush paths
 	string str ;							// string gia apothikeush twn suntetagmenwn	
+	string type_of_hash;						// eidos hashtable
+	string type_of_distance;					// eidos apostashs
+
+	//FILE *dataset=NULL;
   
 	for (index = 1; index < argc; index++) {              		// tsekarei na dei poia parametro dinei o xrhsths mesw terminal kai thn
                                                               		// apothikeuei sthn katallhlh metavlhth
-		if (strcmp(argv[index], "-d") == 0) {
-			d = string(argv[index+1]);
+
+		if (!strcmp(argv[index], "-d")) {
+
+			dataset = string(argv[index+1]);
+			
+			if(!dataset.empty()){                                          
+            			cout << "dataset file ok" << endl;
+        		}
+       			else{
+            			cout << "error dataset file" << endl;
+            			return 1;
+        		}
+			
+			
         	}
         	else if (strcmp(argv[index], "-q") == 0) {
-            		q = string(argv[index+1]);
+            		queries = string(argv[index+1]);
+
+			if(!queries.empty()){                                          
+            			cout << "queries file ok" << endl;
+        		}
+       			else{
+            			cout << "error queries file" << endl;
+            			return 1;
+        		}
         	}
         	else if (strcmp(argv[index], "-k") == 0) {
             		k = atoi(argv[index+1]);
@@ -32,36 +57,87 @@ int main(int argc, const char *argv[]) {
             		L = atoi(argv[index+1]);
         	}
         	else if (strcmp(argv[index], "-o") == 0) {
-            		o = string(argv[index+1]);
+            		output = string(argv[index+1]);
+
+			if(!output.empty()){                                          
+            			cout << "output file ok" << endl;
+        		}
+       			else{
+            			cout << "error output file" << endl;
+            			return 1;
+        		}
+        	}
+		else if (strcmp(argv[index], "-hash") == 0) {
+            		type_of_hash = string(argv[index+1]);
+        	}
+		else if (strcmp(argv[index], "-function") == 0) {
+            		type_of_distance = string(argv[index+1]);
         	}
     	}
 
-	if (d.empty()){							// tsekarei ama o xrhsths exei dwsei to path gia to dataset mesw 										// terminal
+
+	if (dataset.empty()){						// tsekarei ama o xrhsths exei dwsei to path gia to dataset mesw 										// terminal
 
 		cout << "give the path for your dataset file" << endl;	// an den thn dwsei thn zhtaei apo to xrhsth
-		d = ReadLine();
+		dataset = ReadLine();
 	}
 
-	if (q.empty()){							// tsekarei ama o xrhsths exei dwsei to path gia ta queries mesw 										// terminal
+
+	if (type_of_distance.empty()){					// tsekarei ama o xrhsths exei dwsei to eidos sunarthshs   										// apostashs mesw terminal
+
+		cout << "give the type of your distance function" << endl;
+		type_of_distance = ReadLine();
+	}
+
+	if (type_of_hash.empty()){					// tsekarei ama o xrhsths exei dwsei to eidos tou   										// hashtable mesw terminal
+
+		cout << "give the type of your hashtable" << endl;
+		type_of_hash = ReadLine();
+	}
+
+
+
+
+	//--------------------Dhmiourgia Domhs Anazhthshs--------------------------------------------//
+
+
+
+
+	if (queries.empty()){						// tsekarei ama o xrhsths exei dwsei to path gia ta queries mesw 										// terminal
 
 		cout << "give the path for your queries file" << endl;
-		q = ReadLine();
+		queries = ReadLine();
 	}
+	
 
-	if (o.empty()){							// tsekarei ama o xrhsths exei dwsei to path gia to output mesw
+	if (output.empty()){						// tsekarei ama o xrhsths exei dwsei to path gia to output mesw
 									// terminal
 
-		cout << "give the path for your output 2 file" << endl;
-		o = ReadLine();
+		cout << "give the path for your output file" << endl;
+		output = ReadLine();
 	}
+
+
 
 	Linked_List_C* list = new Linked_List_C();			//dhmiourgia listas apo ton default constructor
 
-	ifstream set(d.c_str());					//auto to arxeio anoigw
+	//cout << d ;
+
+	load_list_with_curves("",list);
+
+
+	//ifstream set(d.c_str(),ios::in);				//auto to arxeio anoigw
+	//ifstream set("dataset0");
+	//hash*  table = new hash(10);
+	//table->print();
+	//table->destroy_hash_table();
+	//table->print();
+
+	/*ifstream set(dataset.c_str());					//auto to arxeio anoigw
 
 	int count = 0 ;							//metrhths
  	while (getline(set,str)){					//oso uparxoun grammes diavase mia apo to input(dataset)
-               
+       
 		int i;
                 string curve; 						//strings gia apothikefsh twn suntetagmenwn
 
@@ -88,7 +164,7 @@ int main(int argc, const char *argv[]) {
 	list->Traverse_and_print_C();	
 
         set.close();
-	
+	*/
 }
 
 
